@@ -11,14 +11,14 @@ declare(strict_types=1);
     <div class="final-cta__glow" aria-hidden="true"></div>
     <div class="container final-cta__inner">
         <p class="eyebrow reveal"><span class="eyebrow__dot"></span>Your community is waiting</p>
-        <h2 class="final-cta__title" data-split>Build the community your members&nbsp;deserve.</h2>
-        <p class="final-cta__lede reveal">Move beyond static lists. Give members a living space to connect, participate, and keep coming back — powered by AI from day one.</p>
+        <h2 class="final-cta__title" data-split>Ready to Build Your Community?</h2>
+        <p class="final-cta__lede reveal">Create your own branded member experience that keeps people connected between events.</p>
         <div class="final-cta__actions reveal">
             <a class="btn btn--primary btn--lg" href="<?= e($SITE['demo_url']) ?>" data-magnetic>
-                <span>Request a Demo</span>
+                <span>Get Started</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
             </a>
-            <a class="btn btn--ghost btn--lg" href="<?= e($SITE['demo_url']) ?>" data-magnetic>Join Early Access</a>
+            <a class="btn btn--ghost btn--lg" href="<?= e($SITE['demo_url']) ?>" data-magnetic>Apply for Early Access</a>
         </div>
     </div>
 </section>

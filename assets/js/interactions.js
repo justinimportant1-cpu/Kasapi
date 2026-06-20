@@ -11,7 +11,115 @@
     featurePanel();
     heroDepth();
     tiltCards();
+    heroFeed();
+    brandThemes();
+    growTabs();
+    videoModal();
   });
+
+  /* ---- Hero live activity feed: notifications slide in, then cycle ---- */
+  function heroFeed() {
+    const feed = document.getElementById('heroFeed');
+    if (!feed) return;
+    const notes = [...feed.children];
+    if (K.reduceMotion) { notes.forEach((n) => n.classList.add('in')); return; }
+    let i = 0;
+    const reveal = () => {
+      if (i < notes.length) { notes[i].classList.add('in'); i++; setTimeout(reveal, 700); }
+      else cycle();
+    };
+    // continuously rotate the top note to keep the app feeling alive
+    function cycle() {
+      setInterval(() => {
+        const first = feed.firstElementChild;
+        first.classList.remove('in');
+        setTimeout(() => {
+          feed.appendChild(first);
+          requestAnimationFrame(() => first.classList.add('in'));
+        }, 480);
+      }, 2600);
+    }
+    new IntersectionObserver((ents, o) => ents.forEach((en) => {
+      if (en.isIntersecting) { reveal(); o.disconnect(); }
+    }), { threshold: .3 }).observe(feed);
+  }
+
+  /* ---- Brand ownership: live theme/logo/name swapping ---- */
+  function brandThemes() {
+    const swatches = document.getElementById('brandSwatches');
+    if (!swatches) return;
+    const logo = document.getElementById('brandLogo');
+    const name = document.getElementById('brandName');
+    const barName = document.getElementById('brandBarName');
+    const glow = document.getElementById('brandGlow');
+    const btns = [...swatches.querySelectorAll('button')];
+    const apply = (btn) => {
+      btns.forEach((b) => b.classList.toggle('is-active', b === btn));
+      const grad = btn.style.background;
+      if (logo) { logo.style.background = grad; logo.textContent = btn.dataset.mono; }
+      if (name) name.textContent = btn.dataset.name;
+      if (barName) barName.textContent = btn.dataset.name;
+      if (glow) glow.style.background = `radial-gradient(closest-side, ${accent(btn.dataset.brand)}, transparent 72%)`;
+      if (window.gsap && !K.reduceMotion) {
+        window.gsap.fromTo('#brandScreen .phone__app', { autoAlpha: .4, y: 8 }, { autoAlpha: 1, y: 0, duration: .45, ease: 'power3.out' });
+      }
+    };
+    const accent = (k) => ({ purple: 'rgba(139,92,246,.55)', teal: 'rgba(20,184,166,.55)', amber: 'rgba(245,158,11,.5)', indigo: 'rgba(99,102,241,.55)' }[k] || 'rgba(139,92,246,.5)');
+    btns.forEach((b) => b.addEventListener('click', () => apply(b)));
+    // auto-cycle when in view (stops once a user interacts)
+    let auto = true, idx = 0;
+    btns.forEach((b) => b.addEventListener('click', () => { auto = false; }));
+    if (!K.reduceMotion) {
+      new IntersectionObserver((ents) => ents.forEach((en) => {
+        if (en.isIntersecting && auto) {
+          en.target._t ||= setInterval(() => { if (!auto) return; idx = (idx + 1) % btns.length; apply(btns[idx]); }, 2400);
+        }
+      }), { threshold: .4 }).observe(swatches);
+    }
+  }
+
+  /* ---- Three paths: tabs that crossfade copy + swap phone screen ---- */
+  function growTabs() {
+    const wrap = document.getElementById('growTabs');
+    if (!wrap) return;
+    const btns = [...wrap.querySelectorAll('.tabs__btn')];
+    const panels = [...wrap.querySelectorAll('.tabs__panel')];
+    const views = [...wrap.querySelectorAll('#tabPhone .phone__view')];
+    const select = (key) => {
+      btns.forEach((b) => { const on = b.dataset.tab === key; b.classList.toggle('is-active', on); b.setAttribute('aria-selected', String(on)); });
+      panels.forEach((p) => p.classList.toggle('is-active', p.dataset.panel === key));
+      views.forEach((v) => v.classList.toggle('is-active', v.dataset.view === key));
+    };
+    btns.forEach((b) => b.addEventListener('click', () => select(b.dataset.tab)));
+    // keyboard arrows
+    wrap.querySelector('.tabs__nav')?.addEventListener('keydown', (e) => {
+      const i = btns.findIndex((b) => b.classList.contains('is-active'));
+      if (e.key === 'ArrowRight') { e.preventDefault(); btns[(i + 1) % btns.length].focus(); btns[(i + 1) % btns.length].click(); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); btns[(i - 1 + btns.length) % btns.length].focus(); btns[(i - 1 + btns.length) % btns.length].click(); }
+    });
+  }
+
+  /* ---- Watch Demo video modal ---- */
+  function videoModal() {
+    const modal = document.getElementById('videoModal');
+    if (!modal) return;
+    const video = document.getElementById('modalVideo');
+    const close = document.getElementById('modalClose');
+    const open = () => {
+      modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; K.lenis?.stop?.();
+      video?.play?.().catch(() => {});
+    };
+    const hide = () => {
+      modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; K.lenis?.start?.();
+      if (video) { video.pause(); }
+    };
+    document.querySelectorAll('[data-video]').forEach((b) => b.addEventListener('click', open));
+    close?.addEventListener('click', hide);
+    modal.addEventListener('click', (e) => { if (e.target === modal) hide(); });
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('is-open')) hide(); });
+  }
 
   /* ---- Feature constellation: place nodes on a ring + draw links ---- */
   function buildConstellation() {

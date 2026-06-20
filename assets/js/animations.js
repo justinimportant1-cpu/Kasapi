@@ -20,6 +20,7 @@
       counters(gsap, ST);
       parallax(gsap, ST);
       memberJourney(gsap, ST);
+      slidingPanels(gsap, ST);
       eventBars(gsap, ST);
     } else {
       observerReveals();        // fallback (also covers reduced-motion)
@@ -154,6 +155,27 @@
         scale: 1, autoAlpha: 1, ease: 'power2.out',
         scrollTrigger: { trigger: st, containerAnimation: tl, start: 'left 80%', end: 'left 40%', scrub: true },
       });
+    });
+  }
+
+  /* ---- Pinned horizontal sliding hero panels ---- */
+  function slidingPanels(gsap, ST) {
+    const section = document.querySelector('.panels');
+    const track = section?.querySelector('.panels__track');
+    if (!section || !track) return;
+    const dist = () => track.scrollWidth - window.innerWidth;
+    gsap.to(track, {
+      x: () => -dist(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: () => '+=' + dist(),
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
     });
   }
 
