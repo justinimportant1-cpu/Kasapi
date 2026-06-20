@@ -170,7 +170,7 @@ render_header([
 </section>
 
 <!-- ====================== 5 · BRAND OWNERSHIP ====================== -->
-<section class="section" data-sec="Brand" aria-label="Your community, your brand, your app">
+<section class="section section--light" data-sec="Brand" aria-label="Your community, your brand, your app">
     <div class="container own__grid">
         <div class="reveal">
             <p class="eyebrow"><span class="eyebrow__dot"></span>Your community, your brand</p>
@@ -321,7 +321,7 @@ render_header([
 </section>
 
 <!-- ====================== 8 · ENGAGEMENT ====================== -->
-<section class="section" data-sec="More" aria-label="More than just a member list">
+<section class="section section--light" data-sec="More" aria-label="More than just a member list">
     <div class="container">
         <div class="sec-head">
             <p class="eyebrow reveal"><span class="eyebrow__dot"></span>It's people, not records</p>

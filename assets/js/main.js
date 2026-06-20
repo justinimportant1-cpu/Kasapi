@@ -107,30 +107,6 @@
     update();
   }
 
-  /* ---------------- Custom cursor ---------------- */
-  function initCursor() {
-    if (!finePointer || reduceMotion) return;
-    const ring = document.getElementById('cursor');
-    const dot  = document.getElementById('cursorDot');
-    if (!ring || !dot) return;
-    document.body.classList.add('has-cursor');
-    let rx = innerWidth / 2, ry = innerHeight / 2, dx = rx, dy = ry, x = rx, y = ry;
-    addEventListener('mousemove', (e) => { x = e.clientX; y = e.clientY; }, { passive: true });
-    const render = () => {
-      rx += (x - rx) * 0.18; ry += (y - ry) * 0.18;
-      dx += (x - dx) * 0.42; dy += (y - dy) * 0.42;
-      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
-      dot.style.transform  = `translate(${dx}px,${dy}px) translate(-50%,-50%)`;
-      requestAnimationFrame(render);
-    };
-    requestAnimationFrame(render);
-    const hov = 'a,button,[data-magnetic],.node,.chip,.card,input,textarea,select';
-    document.querySelectorAll(hov).forEach((el) => {
-      el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
-    });
-  }
-
   /* ---------------- Magnetic buttons ---------------- */
   function initMagnetic() {
     if (!finePointer || reduceMotion) return;
@@ -175,7 +151,6 @@
   function boot() {
     initLenis();
     initScrollUI();
-    initCursor();
     initMagnetic();
     initMobileMenu();
     runLoader();

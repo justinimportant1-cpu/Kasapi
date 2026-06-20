@@ -74,10 +74,6 @@ $canonical = rtrim($SITE['url'], '/') . '/' . ltrim(basename($_SERVER['SCRIPT_NA
 <!-- Scroll progress -->
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-<!-- Custom cursor (desktop, fine pointer only) -->
-<div class="cursor" id="cursor" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-
 <!-- Ambient aurora field, fixed behind everything -->
 <div class="aurora" aria-hidden="true">
     <span class="aurora__blob aurora__blob--1"></span>
