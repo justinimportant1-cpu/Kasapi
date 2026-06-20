@@ -170,7 +170,7 @@ render_header([
 </section>
 
 <!-- ====================== 5 · BRAND OWNERSHIP ====================== -->
-<section class="section section--light" data-sec="Brand" aria-label="Your community, your brand, your app">
+<section class="section" data-sec="Brand" aria-label="Your community, your brand, your app">
     <div class="container own__grid">
         <div class="reveal">
             <p class="eyebrow"><span class="eyebrow__dot"></span>Your community, your brand</p>
@@ -215,7 +215,7 @@ render_header([
 </section>
 
 <!-- ====================== 6 · THREE PATHS (tabs) ====================== -->
-<section class="section" data-sec="Grow" aria-label="Three ways to grow">
+<section class="section section--light" data-sec="Grow" aria-label="Three ways to grow">
     <div class="container">
         <div class="sec-head">
             <p class="eyebrow reveal"><span class="eyebrow__dot"></span>One platform, one app</p>
@@ -349,7 +349,7 @@ render_header([
 </section>
 
 <!-- ====================== 9 · USE CASES (bento) ====================== -->
-<section class="section" data-sec="Create" aria-label="What you can create with Kasapi">
+<section class="section section--light" data-sec="Create" aria-label="What you can create with Kasapi">
     <div class="container">
         <div class="sec-head">
             <p class="eyebrow reveal"><span class="eyebrow__dot"></span>Endless possibilities</p>

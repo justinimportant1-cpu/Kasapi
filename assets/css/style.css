@@ -755,4 +755,19 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.05;let
 .section--light .card__n{color:rgba(15,21,48,.06)}
 .section--light .own__close{color:#0F1530}
 .section--light .brand-swatches button.is-active{border-color:#0F1530}
+
+/* Three-paths tabs on white */
+.section--light .tabs__btn{background:#fff;border-color:rgba(15,21,48,.12);color:#475569}
+.section--light .tabs__btn:hover{color:#0F1530}
+.section--light .tabs__btn.is-active{color:#fff}            /* keeps gradient fill */
+.section--light .tabs__panel p{color:var(--text-dim)}
+
+/* Use-case bento on white: solid cards, pastel glows, dark text */
+.section--light .bento__item{background:#fff;border-color:rgba(15,21,48,.08);
+  box-shadow:0 18px 44px -30px rgba(15,21,48,.32)}
+.section--light .bento__bg{opacity:.22}
+.section--light .bento__item:hover .bento__bg{opacity:.4}
+.section--light .bento__ic{background:#F1F2F9;border-color:rgba(15,21,48,.1);color:#6D28D9}
+.section--light .bento__t{color:#0F1530}
+.section--light .bento__reveal{color:var(--text-dim)}
 /* text-grad and gradient icon chips already read well on white */
