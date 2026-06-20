@@ -12,7 +12,7 @@ declare(strict_types=1);
  * Environment
  * ------------------------------------------------------------------ */
 const KASAPI_ENV  = 'production';            // 'production' | 'development'
-const ASSET_VER   = '1.0.0';                 // bump to bust caches
+const ASSET_VER   = '1.2.0';                 // bump to bust caches
 
 date_default_timezone_set('UTC');
 
