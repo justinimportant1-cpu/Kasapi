@@ -15,6 +15,20 @@
   .mega{width:min(560px,90vw)}
 }
 
+/* ---------- Story: stack the travelling phone above the steps ---------- */
+@media (max-width:980px){
+  .story__inner{grid-template-columns:1fr;gap:0}
+  .story__device{order:-1}
+  .story__sticky{position:sticky;top:calc(var(--nav-h) + 10px);min-height:auto;padding-block:14px}
+  .story__head{text-align:center;margin-inline:auto}
+  .story__head .h2{text-align:center}
+  .story__head .lede{margin-inline:auto}
+  .story__step{min-height:auto;padding-block:40px;text-align:center;align-items:center}
+  .story__step p{margin-inline:auto}
+  .phone--travel{width:clamp(200px,46vw,244px)}
+  .story__note,.story__rail{display:none}
+}
+
 /* ---------- Tablet ---------- */
 @media (max-width:900px){
   :root{--nav-h:68px}
@@ -60,6 +74,6 @@
 
 /* ---------- Reduced-data / print niceties ---------- */
 @media print{
-  .nav,.loader,.aurora,.scroll-progress,.cursor,.cursor-dot,.final-cta__net{display:none!important}
+  .nav,.loader,.aurora,.particles,.scroll-progress,.cursor,.cursor-dot,.final-cta__net{display:none!important}
   body{background:#fff;color:#000}
 }

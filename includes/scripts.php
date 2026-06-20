@@ -20,5 +20,7 @@ declare(strict_types=1);
 <script defer src="<?= e(asset('js/interactions.js')) ?>"></script>
 <script defer src="<?= e(asset('js/webgl.js')) ?>"></script>
 <script defer src="<?= e(asset('js/carousel.js')) ?>"></script>
+<!-- Story module: scroll-driven floating phone + soft particles (tsParticles lazy-loaded) -->
+<script defer src="<?= e(asset('js/story.js')) ?>"></script>
 </body>
 </html>

@@ -771,3 +771,83 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.05;let
 .section--light .bento__t{color:#0F1530}
 .section--light .bento__reveal{color:var(--text-dim)}
 /* text-grad and gradient icon chips already read well on white */
+
+/* ===================================================================
+   SOFT GLOWING PARTICLES (tsParticles) — global ambient layer
+   Sits above the aurora, below all content. Lazy-initialised in story.js.
+   =================================================================== */
+.particles{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.9}
+.particles canvas{position:absolute!important;inset:0;mix-blend-mode:screen}
+
+/* ===================================================================
+   BUTTON — light variant (on saturated/gradient backgrounds)
+   =================================================================== */
+.btn--light{background:#fff;color:#5B21B6}
+.btn--light::before{display:none}
+.btn--light:hover{transform:translateY(-3px);box-shadow:0 22px 46px -18px rgba(255,255,255,.55)}
+
+/* ===================================================================
+   HERO — social proof row, connection lines, supporting phone
+   =================================================================== */
+.hero__proof{display:flex;align-items:center;gap:14px;margin-top:32px;max-width:46ch}
+.hero__avatars{display:flex}
+.hero__avatars span{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:700;font-size:.74rem;color:#fff;
+  border:2px solid var(--midnight);margin-left:-12px;box-shadow:0 8px 20px -8px rgba(2,4,16,.9)}
+.hero__avatars span:first-child{margin-left:0}
+.hero__proof p{font-size:.92rem;color:rgba(248,250,252,.82);line-height:1.45}
+
+.hero__links{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.55}
+
+.phone--hero{position:absolute;bottom:-6%;right:0;width:clamp(180px,14vw,220px);margin:0;z-index:2}
+
+/* ===================================================================
+   STORY — the recurring floating phone that travels through the page
+   Sticky device + scroll-activated steps that swap the app screen.
+   =================================================================== */
+.story{position:relative;padding-block:clamp(48px,7vw,96px)}
+.story__inner{display:grid;grid-template-columns:1fr minmax(300px,430px);
+  gap:clamp(36px,6vw,90px);align-items:start}
+.story__head{margin-bottom:clamp(20px,5vw,56px);max-width:50ch}
+.story__head .h2{text-align:left;margin:16px 0 16px}
+.story__head .lede{margin:0}
+
+.story__step{min-height:70vh;display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(16px,3vw,32px);opacity:.38;filter:saturate(.7);
+  transition:opacity .55s var(--ease),filter .55s var(--ease),transform .55s var(--ease)}
+.story__step.is-active{opacity:1;filter:none}
+.story__step-n{font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.18em;
+  color:var(--purple);margin-bottom:14px}
+.story__step-ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;color:#fff;
+  background:var(--grad-purple);box-shadow:0 16px 34px -14px rgba(139,92,246,.8);margin-bottom:20px;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.story__step.is-active .story__step-ico{transform:translateY(-3px) scale(1.05);
+  box-shadow:0 22px 44px -14px rgba(139,92,246,.95)}
+.story__step h3{font-size:clamp(1.55rem,3.2vw,2.4rem);color:#fff;margin-bottom:14px}
+.story__step p{color:var(--text-dim);max-width:46ch;font-size:clamp(1.02rem,1.4vw,1.18rem)}
+
+.story__device{position:relative}
+.story__sticky{position:sticky;top:clamp(84px,15vh,170px);
+  display:flex;justify-content:center;align-items:center}
+.phone--travel{width:clamp(248px,23vw,304px)}
+
+/* floating notification that updates with the active step */
+.story__note{position:absolute;top:6%;left:-7%;z-index:4;min-width:190px;animation:none}
+.story__note.is-pop{animation:cardPop .5s var(--ease)}
+
+/* vertical progress rail beside the phone */
+.story__rail{position:absolute;left:-26px;top:12%;bottom:12%;width:3px;border-radius:3px;
+  background:var(--line);overflow:hidden;z-index:2}
+.story__rail span{position:absolute;top:0;left:0;width:100%;height:0;border-radius:3px;
+  background:var(--grad-brand);box-shadow:0 0 14px rgba(139,92,246,.8);transition:height .55s var(--ease)}
+
+/* chat-bubble screen (messaging) */
+.chat{display:flex;flex-direction:column;gap:8px;padding-top:4px}
+.chat__b{max-width:80%;padding:9px 12px;border-radius:15px;font-size:.74rem;line-height:1.32;color:#fff}
+.chat__b--in{align-self:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);
+  border-bottom-left-radius:5px}
+.chat__b--out{align-self:flex-end;background:var(--grad-purple);border-bottom-right-radius:5px}
+
+/* shared phone CTA row */
+.phone__row--cta{background:rgba(139,92,246,.22);color:#fff;font-weight:600;justify-content:center;margin-top:2px}
+.phone__row--cta .ic{background:rgba(255,255,255,.22);color:#fff}

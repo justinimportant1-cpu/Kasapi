@@ -51,6 +51,9 @@
 
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
+/* floating-card pop when its content changes (story device) */
+@keyframes cardPop{0%{transform:scale(.94);opacity:.45}60%{transform:scale(1.025)}100%{transform:scale(1);opacity:1}}
+
 /* gradient text shimmer utility */
 .shimmer{background-size:220% 100%;animation:shimmer 6s linear infinite}
 
@@ -75,4 +78,7 @@
   .reveal,.reveal-stagger>*,.reveal-blur{opacity:1!important;transform:none!important;filter:none!important}
   .aurora__blob,.float-card,.ai__orb,.ai__insight,.constellation__core,.marquee__track{animation:none!important}
   html.js [data-split],html.js .reveal,html.js .reveal-stagger>*{opacity:1!important}
+  /* story steps must stay fully legible without scroll motion */
+  .story__step{opacity:1!important;filter:none!important;transform:none!important}
+  .particles{display:none!important}
 }

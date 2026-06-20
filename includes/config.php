@@ -171,3 +171,9 @@ function render_footer(): void
     include __DIR__ . '/footer.php';
     include __DIR__ . '/scripts.php';
 }
+
+/* ------------------------------------------------------------------ *
+ * Reusable UI components (global design system). Loaded last so the
+ * helpers (e/asset) above are already defined.
+ * ------------------------------------------------------------------ */
+require_once __DIR__ . '/components.php';

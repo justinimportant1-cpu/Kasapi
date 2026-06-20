@@ -81,3 +81,6 @@ $canonical = rtrim($SITE['url'], '/') . '/' . ltrim(basename($_SERVER['SCRIPT_NA
     <span class="aurora__blob aurora__blob--3"></span>
     <span class="aurora__grain"></span>
 </div>
+
+<!-- Soft glowing particle field (tsParticles, lazy-initialised, paused off-screen) -->
+<div class="particles" id="particles" aria-hidden="true"></div>
