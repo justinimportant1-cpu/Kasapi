@@ -1,0 +1,65 @@
+/* =====================================================================
+   KASAPI · responsive.css — breakpoints & adaptive layout
+   Desktop-first overrides. Tokens & base live in style.css.
+   ===================================================================== */
+
+/* ---------- Large tablet / small desktop ---------- */
+@media (max-width:1100px){
+  .hero__grid{grid-template-columns:1fr;gap:24px}
+  .hero__stage{display:none}            /* float cards live over image only on wide screens */
+  .ai__grid,.events__grid,.split{grid-template-columns:1fr;gap:40px}
+  .dash__charts{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .footer__grid{grid-template-columns:1fr 1fr 1fr;gap:32px}
+  .footer__brand{grid-column:1 / -1}
+  .mega{width:min(560px,90vw)}
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width:900px){
+  :root{--nav-h:68px}
+  .nav__menu,.nav__cta{display:none}
+  .nav__burger{display:flex}
+  .grid--3,.grid--4,.price-grid{grid-template-columns:repeat(2,1fr)}
+  .constellation{min-height:560px}
+  .feat-panel__card{grid-template-columns:1fr;text-align:left}
+  .journey__track{padding-inline:8vw}
+}
+
+/* ---------- Large phone ---------- */
+@media (max-width:680px){
+  body{font-size:15px}
+  .grid--2,.grid--3,.grid--4,.price-grid{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .hero__stats{gap:22px}
+  .feat-panel__card{padding:24px}
+  .cursor,.cursor-dot{display:none}
+  body.has-cursor,body.has-cursor a,body.has-cursor button{cursor:auto}
+  .section{padding-block:clamp(60px,14vw,90px)}
+}
+
+/* ---------- Small phone ---------- */
+@media (max-width:430px){
+  .nav{top:10px}
+  .nav__inner{padding:9px 10px 9px 16px}
+  .nav__logo{height:26px}
+  .btn{padding:13px 22px}
+  .hero__title{font-size:clamp(2.4rem,10vw,3.2rem)}
+  .footer__grid{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr}
+  .footer__bottom{flex-direction:column;text-align:center}
+}
+
+/* ---------- Coarse pointers: no custom cursor, larger hit areas ---------- */
+@media (hover:none),(pointer:coarse){
+  .cursor,.cursor-dot{display:none!important}
+  body.has-cursor,body.has-cursor a,body.has-cursor button{cursor:auto!important}
+  .nav__item.has-mega:hover .mega{opacity:0;visibility:hidden;pointer-events:none}
+}
+
+/* ---------- Reduced-data / print niceties ---------- */
+@media print{
+  .nav,.loader,.aurora,.scroll-progress,.cursor,.cursor-dot,.final-cta__net{display:none!important}
+  body{background:#fff;color:#000}
+}
